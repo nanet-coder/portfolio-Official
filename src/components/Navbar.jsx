@@ -38,7 +38,7 @@ export default function Navbar() {
 
                     {/* Texts */}
                     <div className="flex flex-col">
-                        <span className="font-bold italic text-xl tracking-widest text-white hover:text-amber-400 transition-colors duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">
+                        <span className="logo-font font-bold italic text-xl tracking-widest text-white hover:text-amber-400 transition-colors duration-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]">
                             HOUN
                         </span>
                         <p className="text-sm text-amber-400">Developer</p>

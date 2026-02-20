@@ -90,11 +90,11 @@ export default function Hero() {
 
             {/* ================= CONTENT ================= */}
             <div className="relative max-w-3xl text-white space-y-6 z-10">
-                <h1 className="text-5xl md:text-6xl font-bold animate-fadeInUp">Hi! Everyone</h1>
-                <h2 className="text-3xl font-bold text-purple-200 animate-fadeInUp delay-100">
+                <h1 className="logo-font text-5xl md:text-6xl font-bold animate-fadeInUp">Hi! Everyone</h1>
+                <h2 className="logo-font text-3xl font-bold text-purple-200 animate-fadeInUp delay-100">
                     Welcome to my Portfolio!
                 </h2>
-                <h3 className="text-4xl font-bold text-pink-300 animate-fadeInUp delay-200">I'm Sok Lim Houn</h3>
+                <h3 className="logo-font text-4xl font-bold text-pink-300 animate-fadeInUp delay-200">I'm Sok Lim Houn</h3>
 
                 {/* Typing text with neon glow */}
                 <p className="text-xl h-8 relative animate-fadeInUp delay-300">

@@ -33,7 +33,9 @@ export default function Developers() {
         <div
             id="developer"
             className="max-w-6xl mx-auto px-4 py-12">
-            <h2 className="text-4xl font-bold text-center text-white mb-10">Our Developers</h2>
+            <h2 className="text-5xl font-bold text-center text-whihte mb-10 animate-glow-amber">
+                Our Developers
+            </h2>
             <div className="grid md:grid-cols-3 gap-8">
                 {developers.map((dev, index) => (
                     <div

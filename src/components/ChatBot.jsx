@@ -90,7 +90,6 @@ const Chatbot = () => {
                         </button>
                     ))}
                 </div>
-
                 {/* Input Area */}
                 <form onSubmit={handleSendMessage} className="p-3 bg-gray-950 border-t border-white/10 flex gap-2">
                     <input
