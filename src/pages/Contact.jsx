@@ -1,60 +1,74 @@
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhone } from "react-icons/fa";
 
 export default function Contact() {
+    const contacts = [
+        {
+            icon: <FaEnvelope />,
+            text: "soklimhoun@gmail.com",
+            href: "mailto:soklimhoun@gmail.com",
+        },
+        {
+            icon: <FaGithub />,
+            text: "github.com/soklimhoun",
+            href: "https://github.com/soklimhoun",
+            external: true,
+        },
+        {
+            icon: <FaLinkedin />,
+            text: "linkedin.com/in/soklimhoun",
+            href: "https://www.linkedin.com/in/soklimhoun",
+            external: true,
+        },
+        {
+            icon: <FaPhone />,
+            text: "+855 88 389 3940",
+            href: "tel:+85512345678",
+        },
+    ];
+
     return (
-        <section
-            id="contact"
-            className="py-28 px-6 text-white relative"
-        >
+        <section id="contact" className="py-28 px-6 relative bg-black/20">
             <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">Contact Me</h2>
-                <p className="text-gray-200 text-lg mb-12">
+                {/* Heading with subtle fade/slide animation */}
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white/70 drop-shadow-lg animate-titleFade">
+                    Contact Me
+                </h2>
+
+                {/* Description */}
+                <p className="text-lg mb-12 text-white/70 drop-shadow-sm">
                     I’m open to job opportunities, freelance projects, and collaborations. Feel free to reach out through any of the following:
                 </p>
 
                 {/* Contact Cards */}
                 <div className="grid md:grid-cols-2 gap-8">
-                    {/* Email */}
-                    <a
-                        href="mailto:soklimhoun@gmail.com"
-                        className="flex items-center justify-center gap-4 bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-white/20 transition hover:scale-105"
-                    >
-                        <FaEnvelope className="text-2xl text-white" />
-                        <span className="text-lg font-semibold">soklimhoun@gmail.com</span>
-                    </a>
-
-                    {/* GitHub */}
-                    <a
-                        href="https://github.com/soklimhoun"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-4 bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-white/20 transition hover:scale-105"
-                    >
-                        <FaGithub className="text-2xl text-white" />
-                        <span className="text-lg font-semibold">github.com/soklimhoun</span>
-                    </a>
-
-                    {/* LinkedIn */}
-                    <a
-                        href="https://www.linkedin.com/in/soklimhoun"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-4 bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-blue-700 transition hover:scale-105"
-                    >
-                        <FaLinkedin className="text-2xl text-white" />
-                        <span className="text-lg font-semibold">linkedin.com/in/soklimhoun</span>
-                    </a>
-
-                    {/* Phone */}
-                    <a
-                        href="tel:+85512345678"
-                        className="flex items-center justify-center gap-4 bg-white/10 backdrop-blur-md rounded-xl p-6 hover:bg-green-700 transition hover:scale-105"
-                    >
-                        <FaPhone className="text-2xl text-white" />
-                        <span className="text-lg font-semibold">+855 123 456 78</span>
-                    </a>
+                    {contacts.map((contact, index) => (
+                        <a
+                            key={index}
+                            href={contact.href}
+                            target={contact.external ? "_blank" : "_self"}
+                            rel={contact.external ? "noopener noreferrer" : undefined}
+                            className="flex items-center justify-center gap-4 bg-white/10 backdrop-blur-md rounded-xl p-6 transition-all duration-700 hover:scale-105 hover:bg-amber-400/30"
+                        >
+                            <span className="text-2xl text-white/70 drop-shadow">{contact.icon}</span>
+                            <span className="text-lg font-semibold text-white/70 drop-shadow">
+                                {contact.text}
+                            </span>
+                        </a>
+                    ))}
                 </div>
             </div>
+
+            {/* Animations */}
+            <style>{`
+        /* Title fade/slide animation */
+        @keyframes titleFade {
+          0% { opacity: 0; transform: translateY(-10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-titleFade {
+          animation: titleFade 1.2s ease forwards;
+        }
+      `}</style>
         </section>
     );
 }

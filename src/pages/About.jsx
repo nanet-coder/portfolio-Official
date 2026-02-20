@@ -6,14 +6,36 @@ export default function About() {
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
                 {/* IMAGE */}
-                <div className="relative group">
+                {/* IMAGE BOX WITH ANIMATION */}
+                <div className="relative group overflow-hidden rounded-2xl shadow-2xl w-full aspect-[16/9]">
+                    {/* Image */}
                     <img
-                        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+                        src="https://i.pinimg.com/736x/0b/2e/49/0b2e491cf363fb13fe72f199a1c0cde1.jpg"
                         alt="Developer workspace"
-                        className="rounded-2xl shadow-2xl transition-transform duration-200 group-hover:scale-105"
+                        className="w-full h-full object-cover rounded-2xl transition-transform duration-500 ease-out 
+               animate-spin-slow group-hover:scale-110 group-hover:hue-rotate-180"
                     />
-                    <div className="absolute inset-0 rounded-2xl bg-black/20 group-hover:bg-gradient-to-br from-purple-600/40 to-indigo-600/30 transition duration-200" />
+
+                    {/* Color overlay on hover */}
+                    <div className="absolute inset-0 rounded-2xl bg-transparent group-hover:bg-gradient-to-br from-purple-600/40 to-indigo-600/30 transition-all duration-500 pointer-events-none" />
+
+                    {/* Optional glow/shadow ring */}
+                    <div className="absolute inset-0 rounded-2xl ring-0 group-hover:ring-4 group-hover:ring-purple-500/40 transition-all duration-500 pointer-events-none" />
                 </div>
+
+                {/* Tailwind CSS custom animation for slow spin */}
+                <style>{`
+                    @keyframes spin-slow {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                    .animate-spin-slow {
+                        animation: spin-slow 20s linear infinite;
+                    }
+                    .group-hover\\:hue-rotate-180:hover {
+                        filter: hue-rotate(180deg);
+                    }
+                    `}</style>
 
                 {/* CONTENT */}
                 <div className="space-y-6">
