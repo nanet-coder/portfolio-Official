@@ -1,16 +1,15 @@
-
 export default function ProjectCard({ project, onOpen, mobile }) {
     return (
         <div
             className={`
                 group relative overflow-hidden rounded-3xl bg-white/10 border border-white/20 backdrop-blur
                 transition-all duration-500 hover:shadow-2xl hover:shadow-white/20 hover:scale-105
-                ${mobile ? "min-w-[90%] snap-center" : ""}
+                ${mobile ? "min-w-[90%] snap-center" : "w-full"}
             `}
         >
-            {/* IMAGE */}
+            {/* IMAGE: using image_url from Supabase */}
             <img
-                src={project.img}
+                src={project.image_url}
                 alt={project.title}
                 className="w-full h-80 md:h-96 object-cover transition-transform duration-700 group-hover:scale-110 rounded-t-3xl"
             />
@@ -33,12 +32,10 @@ export default function ProjectCard({ project, onOpen, mobile }) {
 
                     <button
                         onClick={() => onOpen(project)}
-                        className="
-                            px-5 py-3 rounded-full text-sm md:text-base font-medium
+                        className="px-5 py-3 rounded-full text-sm md:text-base font-medium
                             bg-white/20 backdrop-blur hover:bg-white hover:text-black
                             translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100
-                            transition-all duration-500 delay-300
-                        "
+                            transition-all duration-500 delay-300 shadow-lg"
                     >
                         View Project →
                     </button>

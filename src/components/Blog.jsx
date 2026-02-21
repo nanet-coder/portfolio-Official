@@ -1,132 +1,132 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaPlay } from "react-icons/fa";
+import { supabase } from "../supabaseClient"; // Ensure path is correct
 
 export default function Blog() {
-    const blogPosts = [
-        {
-            title: "Getting Started with React",
-            date: "Feb 10, 2026",
-            img: "https://i.pinimg.com/1200x/cb/a0/b8/cba0b89d2bf2d96a1ed26edb5849f804.jpg",
-            video: "https://www.w3schools.com/html/mov_bbb.mp4",
-            content: `
-React is a JavaScript library for building user interfaces.
-Start by creating components and using JSX syntax.
-You can manage state using useState and handle side-effects with useEffect.
-Components can be functional or class-based.
-React encourages reusable UI components for scalable apps.
-Create user interfaces from components.
-      `,
-        },
-        {
-            title: "Tailwind CSS Tips",
-            date: "Feb 12, 2026",
-            img: "https://i.pinimg.com/736x/82/31/53/823153259f6064dd8a73bacf4c58622b.jpg",
-            content: `
-Tailwind CSS allows quick styling with utility classes.
-Use responsive classes for mobile-first design.
-Tailwind CSS allows quick styling with utility classes.
-Use responsive classes for mobile-first design.
-Tailwind CSS allows quick styling with utility classes.
-Use responsive classes for mobile-first design.
-Tailwind CSS allows quick styling with utility classes.
-Use responsive classes for mobile-first design.
-Tailwind CSS allows quick styling with utility classes.
-Use responsive classes for mobile-first design.
-      `,
-        },
-        {
-            title: "Building a Portfolio Website",
-            date: "Feb 15, 2026",
-            img: "https://i.pinimg.com/1200x/59/e1/5d/59e15d56d1c93e102d65022814d6bf3d.jpg",
-            content: `
-Your portfolio is your personal brand. Include your projects, skills, and contact info.
-Make it responsive and visually appealing using Tailwind CSS.
-Add animations and hover effects to enhance user experience.
-Include a blog or testimonials section to show your expertise.
-Ensure fast loading times and good SEO for discoverability.
-      `,
-        },
-    ];
+    const [blogPosts, setBlogPosts] = useState([]);
+    const [selectedPost, setSelectedPost] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    const [selectedPost, setSelectedPost] = useState(blogPosts[0]);
+    useEffect(() => {
+        const fetchBlogs = async () => {
+            setLoading(true);
+            const { data, error } = await supabase
+                .from("blogs")
+                .select("*")
+                // Change "date" to "created_at" to get the absolute latest input first
+                .order("created_at", { ascending: false });
+
+            if (error) {
+                console.error("Error fetching blogs:", error.message);
+            } else {
+                setBlogPosts(data || []);
+                if (data && data.length > 0) setSelectedPost(data[0]);
+            }
+            setLoading(false);
+        };
+        fetchBlogs();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+                <div className="text-white font-bold animate-pulse">Loading Blogs...</div>
+            </div>
+        );
+    }
 
     return (
         <section id="blog" className="py-24 px-6 bg-gray-900 min-h-screen">
-            <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12">My Blog</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12 uppercase tracking-tighter">My Blog</h2>
 
             <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8">
                 {/* Left: Scrollable Blog Cards */}
                 <div className="flex md:flex-col gap-4 md:space-y-4 overflow-x-auto md:overflow-y-auto max-h-[70vh] pr-2 scrollbar-none px-2">
-                    {blogPosts.map((post, index) => (
+                    {blogPosts.map((post) => (
                         <div
-                            key={index}
+                            key={post.id}
                             onClick={() => setSelectedPost(post)}
                             className={`
-                flex items-center md:flex-row flex-col gap-2 p-3 rounded-xl border border-white/20 cursor-pointer
-                transition-all duration-300
-                ${selectedPost.title === post.title ? "bg-white/20 scale-105" : "hover:bg-white/10 hover:scale-105"}
-                min-w-[140px] md:min-w-full
-              `}
+                                flex items-center md:flex-row flex-col gap-4 p-4 rounded-2xl border transition-all duration-300 cursor-pointer
+                                ${selectedPost?.id === post.id ? "bg-white/20 border-white/40 scale-[1.02] shadow-xl" : "bg-white/5 border-white/10 hover:bg-white/10"}
+                                min-w-[160px] md:min-w-full
+                            `}
                         >
-                            {/* Thumbnail with optional video icon */}
-                            <div className="relative w-full md:w-20 h-20 flex-shrink-0">
+                            <div className="relative w-full md:w-24 h-20 flex-shrink-0">
                                 <img
-                                    src={post.img}
-                                    alt={post.title}
-                                    className="w-full h-full object-cover rounded-lg"
+                                    src={post.image_url} // Changed from post.img
+                                    alt=""
+                                    className="w-full h-full object-cover rounded-xl"
                                 />
-                                {post.video && (
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="bg-black/50 rounded-full p-2">
-                                            <FaPlay className="text-white text-sm md:text-base" />
+                                {post.video_url && ( // Changed from post.video
+                                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-xl">
+                                        <div className="bg-indigo-600 rounded-full p-2 shadow-lg">
+                                            <FaPlay className="text-white text-[10px]" />
                                         </div>
                                     </div>
                                 )}
                             </div>
 
-                            {/* Title and Date */}
                             <div className="flex-1">
-                                <h3 className="text-white font-semibold text-sm md:text-base">{post.title}</h3>
-                                <p className="text-gray-400 text-xs md:text-sm">{post.date}</p>
+                                <h3 className="text-white font-bold text-sm md:text-base leading-tight">{post.title}</h3>
+                                <p className="text-indigo-400 font-bold text-[10px] mt-1 uppercase tracking-widest">{post.date}</p>
                             </div>
                         </div>
                     ))}
                 </div>
 
                 {/* Right: Selected Post Content */}
-              
-                {/* Right: Selected Post Content */}
-                <div className="bg-white/10 p-4 md:p-6 rounded-xl border border-white/20 backdrop-blur mt-6 md:mt-0 
-            max-h-[60vh] md:max-h-[70vh] overflow-y-auto text-gray-200">
-                    {/* Video or Image */}
-                    {selectedPost.video ? (
-                        <video
-                            src={selectedPost.video}
-                            controls
-                            className="w-full h-auto max-h-[50vh] md:max-h-[80vh] object-contain rounded-lg mb-4"
-                        />
+                <div className="bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-xl mt-6 md:mt-0 
+    max-h-[75vh] flex flex-col overflow-y-auto text-gray-200 shadow-2xl scrollbar-none">
+
+                    {selectedPost ? (
+                        <div className="flex flex-col h-full">
+                            {/* Media Container: Full Width, Fixed Height */}
+                            <div className="rounded-2xl overflow-hidden mb-6 bg-slate-800 w-full shrink-0">
+                                {selectedPost.video_url ? (
+                                    <div className="aspect-video w-full">
+                                        <video
+                                            key={selectedPost.video_url}
+                                            src={selectedPost.video_url}
+                                            controls
+                                            className="w-full h-full object-cover" // Video fills the frame
+                                        />
+                                    </div>
+                                ) : (
+                                    /* THE FIX: object-cover + w-full makes it go edge-to-edge (Left to Right) */
+                                    <img
+                                        src={selectedPost.image_url}
+                                        alt={selectedPost.title}
+                                        className="w-full h-[250px] md:h-[300px] object-cover block"
+                                    />
+                                )}
+                            </div>
+
+                            {/* Text Content */}
+                            <div className="flex-1">
+                                <h3 className="text-3xl font-black text-white mb-2 leading-tight tracking-tighter">
+                                    {selectedPost.title}
+                                </h3>
+                                <p className="text-indigo-400 font-black text-[10px] mb-4 uppercase tracking-[0.3em]">
+                                    {selectedPost.date}
+                                </p>
+
+                                <div className="h-px w-full bg-white/10 mb-6"></div> {/* Decorative Line */}
+
+                                <div className="space-y-4 text-gray-300 leading-relaxed text-base font-medium">
+                                    {selectedPost.content?.split("\n").map((line, i) => (
+                                        <p key={i}>{line}</p>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     ) : (
-                        <img
-                            src={selectedPost.img}
-                            alt={selectedPost.title}
-                            className="w-full h-auto max-h-[50vh] md:max-h-[80vh] object-contain rounded-lg mb-4"
-                        />
+                        <div className="h-full flex items-center justify-center text-gray-500 italic font-bold">
+                            Select a post to read more.
+                        </div>
                     )}
-
-                    <h3 className="text-2xl font-bold mb-2">{selectedPost.title}</h3>
-                    <p className="text-gray-400 text-sm mb-4">{selectedPost.date}</p>
-                    {selectedPost.content.split("\n").map((line, i) => (
-                        <p key={i} className="mb-2">{line}</p>
-                    ))}
                 </div>
-
-
             </div>
-
-            <style>{`
-        .scrollbar-none::-webkit-scrollbar { display: none; }
-        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
         </section>
     );
 }
