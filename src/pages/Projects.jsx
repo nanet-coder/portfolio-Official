@@ -51,8 +51,8 @@ export default function Projects() {
 
   return (
     /* FIXED: Added relative z-20 to block the rain */
-    <section id="projects" className="relative z-20 py-24 px-4 bg-gray-900 text-white overflow-hidden touch-pan-x">
-      <div data-aos="zoom-in" data-aos-delay="500">
+    <section id="projects" className=" py-24 px-4 bg-gray-900 text-white overflow-hidden touch-pan-x">
+      <div data-aos="fade-right" data-aos-delay="500">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 
         bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
           Projects

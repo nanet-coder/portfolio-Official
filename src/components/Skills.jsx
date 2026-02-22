@@ -21,12 +21,12 @@ export default function Skills() {
     }, []);
 
     return (
-        <section id="skills" className="py-16 px-4 w-full bg-gray-900 bg-gradient-to-t to-gray-800">
+        <section id="skills" className="py-16 px-4 w-full bg-gray-900 bg-gradient-to-t to-gray-800" >
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
                 My Skills
             </h2>
 
-            <div className="overflow-x-auto scrollbar-none">
+            <div className="overflow-x-auto scrollbar-none " data-aos="fade-up" data-aos-delay="200">
                 <div className="flex gap-6 py-4 min-w-max px-4">
                     {skills.map((skill, index) => (
                         <div

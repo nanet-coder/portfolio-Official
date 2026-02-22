@@ -41,7 +41,9 @@ export default function Blog() {
 
             <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8">
                 {/* Left: Scrollable Blog Cards */}
-                <div className="flex md:flex-col gap-4 md:space-y-4 overflow-x-auto md:overflow-y-auto max-h-[70vh] pr-2 scrollbar-none px-2">
+                <div className="flex md:flex-col gap-4 md:space-y-4 overflow-x-auto md:overflow-y-auto max-h-[70vh] pr-2 scrollbar-none px-2"
+                    data-aos="fade-right" data-aos-delay="200"
+                >
                     {blogPosts.map((post) => (
                         <div
                             key={post.id}
@@ -77,7 +79,9 @@ export default function Blog() {
 
                 {/* Right: Selected Post Content */}
                 <div className="bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-xl mt-6 md:mt-0 
-    max-h-[75vh] flex flex-col overflow-y-auto text-gray-200 shadow-2xl scrollbar-none">
+    max-h-[75vh] flex flex-col overflow-y-auto text-gray-200 shadow-2xl scrollbar-none"
+                    data-aos="fade-left" data-aos-delay="200"
+                >
 
                     {selectedPost ? (
                         <div className="flex flex-col h-full">

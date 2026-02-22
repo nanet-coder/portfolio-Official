@@ -3,7 +3,9 @@ import { FaGraduationCap, FaLaptopCode, FaBook } from "react-icons/fa";
 export default function About() {
     return (
         <section id="about" className="w-full bg-gray-900 py-24 px-6">
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center"
+                data-aos="fade-left" data-aos-delay="200"
+            >
 
                 {/* IMAGE */}
                 {/* IMAGE BOX WITH ANIMATION */}
@@ -107,7 +109,9 @@ export default function About() {
             </div>
 
             {/* EDUCATION */}
-            <div className="max-w-6xl mx-auto mt-24">
+            <div className="max-w-6xl mx-auto mt-24"
+                data-aos="fade-up" data-aos-delay="200"
+            >
                 <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
                     Education & Courses
                 </h2>
