@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -15,21 +15,6 @@ import Blog from "./components/Blog";
 import DeveloperBox from "./components/DeveloperBox";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
-  );
-
-  // Apply dark mode to <html>
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-
   // AOS animations
   useEffect(() => {
     AOS.init({
@@ -43,21 +28,29 @@ function App() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center bg-fixed dark:bg-[#0b0b0b] transition-colors duration-500"
-      style={{
-        backgroundImage:
-          "url('https://i.pinimg.com/736x/cf/ba/5e/cfba5e4691a171b450dfd59adc4a5d59.jpg')",
-      }}
-    >
-      <RainThunder />
-      <div className="min-h-screen relative z-10 overflow-x-hidden bg-black/60 dark:bg-black/80 text-white dark:text-gray-200 transition-colors duration-500">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+    <div className="relative min-h-screen text-white">
+      {/* 1. FIXED BACKGROUND LAYER (Solves iPhone Zoom Issue) */}
+      <div
+        className="fixed inset-0 z-0 w-full h-full bg-black"
+        style={{
+          backgroundImage: "url('https://i.pinimg.com/736x/cf/ba/5e/cfba5e4691a171b450dfd59adc4a5d59.jpg')",
+          backgroundPosition: "center",
+          backgroundSize: "cover", // Use "cover" to fill the screen or "contain" to see the whole image
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+
+      {/* 2. OVERLAY LAYER (Darkness filter) */}
+      <div className="fixed inset-0 z-[1] bg-black/60 pointer-events-none" />
+
+      {/* 3. CONTENT LAYER */}
+      <div className="relative z-10 overflow-x-hidden min-h-screen">
+        <RainThunder />
+        <Navbar />
 
         <div data-aos="fade-down" data-aos-delay="100">
           <Hero />
         </div>
-      
 
         <div data-aos="fade-right" data-aos-delay="200">
           <Skills />
@@ -72,6 +65,7 @@ function App() {
         </div>
 
         <Projects />
+
         <div data-aos="fade-right" data-aos-delay="200">
           <DeveloperBox />
         </div>
@@ -79,10 +73,10 @@ function App() {
         <div data-aos="flip-up" data-aos-delay="600">
           <Contact />
         </div>
-          <Footer />
+
+        <Footer />
         <ChatBot />
       </div>
-    
     </div>
   );
 }
