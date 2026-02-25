@@ -33,7 +33,7 @@ export default function Developers() {
         <div
             id="developer"
             className="max-w-6xl mx-auto px-4 py-12">
-            <h2 className="text-4xl md:text-5xll font-bold text-center text-whihte mb-10 animate-glow-amber">
+            <h2 className="text-4xl md:text-5xl font-bold text-center text-whihte mb-10 animate-glow-amber">
                 Our Developers
             </h2>
             <div className="grid md:grid-cols-3 gap-8">

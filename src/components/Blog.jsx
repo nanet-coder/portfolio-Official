@@ -37,7 +37,7 @@ export default function Blog() {
 
     return (
         <section id="blog" className="py-24 px-6 bg-gray-900 min-h-screen">
-            <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12 uppercase tracking-tighter">My Blog</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-red text-center mb-12  tracking-tighter">My Blogs</h2>
 
             <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-8">
                 {/* Left: Scrollable Blog Cards */}

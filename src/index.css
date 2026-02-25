@@ -1,3 +1,6 @@
+/* Body font */
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,11 +9,7 @@
 
 
 
-/* Body font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* Logo font */
-@import url('https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap');
 
 
 
