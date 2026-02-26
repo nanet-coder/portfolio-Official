@@ -112,7 +112,7 @@ export default function About() {
             <div className="max-w-6xl mx-auto mt-24"
                 data-aos="fade-up" data-aos-delay="200"
             >
-                <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-12 header-font">
                     Education & Courses
                 </h2>
 

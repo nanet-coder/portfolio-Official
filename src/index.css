@@ -1,6 +1,5 @@
 /* Body font */
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,6 +19,10 @@
 /* Logo font class */
 .logo-font {
   font-family: 'Bitcount Grid Double', cursive;
+}
+
+.header-font {
+  font-family: "Roboto Slab", serif;
 }
 
 

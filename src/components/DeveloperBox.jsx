@@ -1,7 +1,7 @@
 export default function Developers() {
     const developers = [
         {
-            name: "Sok Lim Houn",
+            name: "Sok LimHoun",
             role: "Frontend Developer • React • Tailwind",
             img: "https://i.pinimg.com/736x/70/2e/b3/702eb327186a62e6bfab5be1e40a1b77.jpg",
             projects: "10+",

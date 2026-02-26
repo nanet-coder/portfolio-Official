@@ -68,7 +68,7 @@ export default function Skills() {
             id="skills"
             className="py-16 px-4 w-full bg-gray-900 bg-gradient-to-t to-gray-800"
         >
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-t from-gray-300 to-gray-50 bg-clip-text text-transparent">
                 My Skills
             </h2>
 
