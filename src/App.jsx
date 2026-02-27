@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import { useMetadata } from "./hooks/useMetadata";
 // នាំចូល supabase client
 import { supabase } from "./supabaseClient";
 
@@ -19,6 +19,14 @@ import Blog from "./components/Blog";
 import DeveloperBox from "./components/DeveloperBox";
 
 function App() {
+  // for Meta data
+  useMetadata({
+    title: 'Bong Houn - Full Stack Developer',
+    description: 'Full Stack Developer portfolio showcasing projects, skills, and experience.',
+    image: 'https://limhoun-official.vercel.app/preview.png',
+    url: 'https://limhoun-official.vercel.app/',
+  });
+  
   const [showPopup, setShowPopup] = useState(false);
   const [unseenQueue, setUnseenQueue] = useState([]); // ផ្ទុករបស់ថ្មីៗទាំងអស់
   const [currentIndex, setCurrentIndex] = useState(0); // លេខរៀងដែលកំពុងបង្ហាញ
