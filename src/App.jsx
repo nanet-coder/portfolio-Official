@@ -19,6 +19,7 @@ import Blog from "./components/Blog";
 import DeveloperBox from "./components/DeveloperBox";
 
 function App() {
+  
   // for Meta data
   useMetadata({
     title: 'Bong Houn - Full Stack Developer',
