@@ -24,7 +24,7 @@ function App() {
   useMetadata({
     title: 'Bong Houn - Full Stack Developer',
     description: 'Full Stack Developer portfolio showcasing projects, skills, and experience.',
-    image: 'https://limhoun-official.vercel.app/preview.png',
+    image: 'https://limhoun-official.vercel.app/preview-og.png?v=5',
     url: 'https://limhoun-official.vercel.app/',
   });
   
