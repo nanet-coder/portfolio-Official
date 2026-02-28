@@ -118,3 +118,106 @@ body {
 .animate-glow-amber {
   animation: glow-amber 2.5s ease-in-out infinite;
 }
+@keyframes border-trace {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-snake {
+  position: absolute;
+  width: 100px;
+  /* Length of the stroke */
+  height: 2px;
+  /* Thickness */
+
+  /* White head with a transparent tail for the "Blur Back" effect */
+  background: linear-gradient(to left,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.2) 70%,
+      transparent 100%);
+
+  /* Glow that stays behind the head */
+  box-shadow: -6px 0 12px rgba(255, 255, 255, 0.8);
+
+  /* Path for the 6px rounded corners */
+  offset-path: rect(0% 100% 100% 0% round 6px);
+  offset-rotate: auto;
+  animation: border-trace 3s linear infinite;
+}
+
+/* Speed up the snake when the user hovers */
+.group:hover .animate-snake {
+  animation-duration: 1.5s;
+}
+
+
+
+@keyframes border-trace {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-snake {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+
+  /* Amber-Gold gradient head with a transparent tail */
+  background: linear-gradient(to left,
+      #fbbf24 0%,
+      rgba(251, 191, 36, 0.4) 50%,
+      transparent 100%);
+
+  /* The Blur Back (Shadow) */
+  box-shadow: -6px 0 12px rgba(251, 191, 36, 0.6);
+
+  /* Path settings */
+  offset-path: rect(0% 100% 100% 0% round 6px);
+  offset-rotate: auto;
+  animation: border-trace 3s linear infinite;
+}
+
+/* Optional: Make the snake turn white on hover to pop against the amber bg */
+.group:hover .animate-snake {
+  background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0.4), transparent);
+  box-shadow: -6px 0 12px rgba(255, 255, 255, 0.8);
+  animation-duration: 1.5s;
+}
+
+
+
+
+@keyframes border-trace {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-snake {
+  position: absolute;
+  width: 40px;
+  /* Shorter for small menu items */
+  height: 2px;
+  background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0.4), transparent);
+  box-shadow: -4px 0 8px rgba(255, 255, 255, 0.8);
+
+  /* Rectangular path matching the rounded-md */
+  offset-path: rect(0% 100% 100% 0% round 6px);
+  offset-rotate: auto;
+  animation: border-trace 2s linear infinite;
+  transition: opacity 0.3s ease;
+}

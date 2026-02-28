@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // ================= FLOWER DROP COMPONENT =================
 const FlowerDrop = () => {
@@ -177,16 +177,41 @@ export default function Hero() {
                 <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6 animate-fadeInUp delay-400">
                     <a
                         href="#projects"
-                        className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition"
+                        className="relative inline-flex items-center justify-center px-8 py-4 
+               bg-transparent hover:bg-gradient-to-r hover:from-amber-300 hover:via-orange-400 hover:to-amber-300 
+               bg-[length:200%_auto] bg-left hover:bg-right
+               text-amber-500 hover:text-white 
+               rounded-md border border-amber-500/30 hover:border-transparent
+               overflow-hidden transition-all duration-500 ease-in-out
+               hover:shadow-[0_0_30px_rgba(251,191,36,0.4)] 
+               group"
                     >
-                        View Projects
+                        {/* The Moving Gradient Snake (Running even before hover) */}
+                        <span className="animate-snake"></span>
+
+                        {/* Content */}
+                        <span className="relative z-10 font-bold tracking-widest uppercase text-sm">
+                            View Project
+                        </span>
                     </a>
 
                     <a
                         href="#contact"
-                        className="px-6 py-3 border border-white rounded-full hover:bg-white hover:text-black transition"
+                        className="relative inline-flex items-center justify-center px-8 py-4 
+               bg-gradient-to-r from-amber-300 via-orange-400 to-amber-300 
+               bg-[length:200%_auto] bg-left hover:bg-right
+               text-white rounded-md border-none overflow-hidden 
+               transition-all duration-700 ease-in-out
+               hover:shadow-[0_0_30px_rgba(251,191,36,0.6)] 
+               group"
                     >
-                        Contact Me
+                        {/* The Moving Gradient Snake */}
+                        <span className="animate-snake"></span>
+
+                        {/* Content */}
+                        <span className="relative z-10 font-bold tracking-widest uppercase text-sm">
+                            Contact Me
+                        </span>
                     </a>
                 </div>
             </div>
